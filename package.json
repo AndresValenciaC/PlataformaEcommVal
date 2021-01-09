@@ -1,0 +1,30 @@
+{
+  "name": "reactexpress_server",
+  "version": "1.0.0",
+  "description": "Starter kit for creating React and Express apps AndresValencia",
+  "main": "server.js",
+  "homepage": "http://andresteccorp.club",
+  "scripts": {
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Andres Campo",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "express-router": "0.0.1",
+    "express-session": "^1.17.1",
+    "mysql": "^2.18.1",
+    "react-navigation": "^4.4.3",
+    "react-router-dom": "^5.2.0"
+  }
+}
