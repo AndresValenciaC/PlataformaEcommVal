@@ -1018,5 +1018,9 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+/** Deploy to heroku
+ * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
+ */
+
 const port = process.env.port || 5000;
 app.listen(port, () => `Server running on port ${port}`);
