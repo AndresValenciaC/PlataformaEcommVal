@@ -46,3 +46,7 @@ class App extends Component {
 // <Route path="/deliveryInCurse/:idP" component={PedidoInfo} />
 
 export default App;
+
+/** Token gitHub
+ * vscode://vscode.github-authentication/did-authenticate?windowid=1&code=d493d2c738af19419407&state=7c685593-59c0-4135-bdd9-a9c006442cc7
+ */
