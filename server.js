@@ -142,19 +142,18 @@ app.get("/idComercioSession", function al(req, res) {
 
 // Se obtiene primero el id del ultimo producto de la tabla producto que es el IdProducto y se coloca en session
 app.get("/maxIdProduct", function al(req, res) {
-  conn.query(" SELECT MAX(idProducto) as idUltimo  from producto", function (
-    error,
-    results,
-    fields
-  ) {
-    if (error) throw error;
-    const idUltimo = results[0].idUltimo;
-    req.session.lastIdProduct = idUltimo;
-    console.log(
-      "Las id (Max) in product table is  : " + req.session.lastIdProduct
-    );
-    res.end(JSON.stringify(results));
-  });
+  conn.query(
+    " SELECT MAX(idProducto) as idUltimo  from producto",
+    function (error, results, fields) {
+      if (error) throw error;
+      const idUltimo = results[0].idUltimo;
+      req.session.lastIdProduct = idUltimo;
+      console.log(
+        "Las id (Max) in product table is  : " + req.session.lastIdProduct
+      );
+      res.end(JSON.stringify(results));
+    }
+  );
 });
 
 /**GET INFO FROM TABLES FOR ROUTES*/
