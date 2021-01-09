@@ -19,22 +19,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
 
-//  ***************** Serve static files from the React app
+/** Middle Ware */
 
-/** app.use(express.static(path.join(__dirname, './client/build')));
-    app.use(express.static(path.join(__dirname, "build")));
-
-     app.use(express.static(path.join(__dirname, "./client/build")));
-     app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "./client/build/index.html"));
-}); */
-
-// ******************
-
-/** app.use('/static', express.static(path.join(__dirname, '../client/build//static')));
-app.get('*', function(req, res) {
-  res.sendFile('index.html', {root: path.join(__dirname, '../../client/build/')});
-});  */
+const whitelist = [
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "http://localhost:8080",
+  "https://shrouded-journey-38552.heroku.com",
+];
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
 
 app.post("/logout", (req, res) => {
   console.log("Logout", req.body);
@@ -1003,17 +1007,16 @@ app.post("/usuarioImage", (req, res) => {
 */
 /************************************ END ****************************************************** */
 
-/*The "catchall" handler: for any request that doesn't
- match one above, send back React's index.html file.*/
+// It serve React to the browser.
 
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname + "./client/build/index.html"));
-// });
-
-// -app.get('/', function (req, res) {
-//   +app.get('/*', function (req, res) {
-//      res.sendFile(path.join(__dirname, 'build', 'index.html'));
-//    });
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
 
 const port = process.env.port || 5000;
 app.listen(port, () => `Server running on port ${port}`);
