@@ -5,6 +5,7 @@ const app = express();
 const router = express.Router();
 const session = require("express-session");
 const path = require("path");
+const cors = require("cors"); // allows and disallows cross-site comunication
 
 app.use(
   session({
@@ -39,6 +40,8 @@ const corsOptions = {
     }
   },
 };
+
+app.use(cors(corsOptions));
 
 app.post("/logout", (req, res) => {
   console.log("Logout", req.body);
