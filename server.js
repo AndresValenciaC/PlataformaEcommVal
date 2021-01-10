@@ -1025,5 +1025,9 @@ if (process.env.NODE_ENV === "production") {
  * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
  */
 
+/** script in pakjson
+ * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+ */
+
 const port = process.env.port || 5000;
 app.listen(port, () => `Server running on port ${port}`);
