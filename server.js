@@ -1010,6 +1010,14 @@ app.post("/usuarioImage", (req, res) => {
 */
 /************************************ END ****************************************************** */
 
+/** Deploy to heroku
+ * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
+ */
+
+/** script in pakjson
+ * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+ */
+
 // It serve React to the browser.
 
 if (process.env.NODE_ENV === "production") {
@@ -1021,13 +1029,5 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-/** Deploy to heroku
- * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
- */
-
-/** script in pakjson
- * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
- */
-
-const port = process.env.port || 5000;
+const port = process.env.port || 8080;
 app.listen(port, () => `Server running on port ${port}`);
