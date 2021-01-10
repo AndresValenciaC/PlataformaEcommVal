@@ -4,7 +4,7 @@
   "description": "Starter kit for creating React and Express apps AndresValencia",
   "main": "server.js",
   "scripts": {
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "client-install": "cd client && npm install",
     "start": "node server.js",
     "server": "nodemon server.js",
