@@ -74,7 +74,7 @@ class profileUser extends Component {
     this.setState({
       selectedFile: event.target.files[0],
       selectedFileImagen:
-        "http://andresteccorp.club/TesisAndres/imagenesProyecto/imagenUsuario/" +
+        "http://andresteccorp.club/ecom_val/imagenesProyecto/imagenUsuario/" +
         nombreFile,
     });
   };
@@ -82,7 +82,7 @@ class profileUser extends Component {
   fileUploadHandler = () => {
     const formData = new FormData();
     const setUploadPorcentage = this.state.setUploadPorcentage;
-    let url = "http://andresteccorp.club/TesisAndres/imagenUploadsUsuario.php";
+    let url = "http://andresteccorp.club/ecom_val/imagenUploadsUsuario.php";
 
     // get the idUsuario
 

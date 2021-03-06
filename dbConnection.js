@@ -24,11 +24,18 @@ DataBase dbecb23gbnxuy7
 usuario u3m7xjrumjja4
 pass u3m7xjrumjja4*/
 
+// var connection = mysql.createConnection({
+//   host: "35.209.244.236",
+//   user: "ubkzwedezp79m",
+//   password: "9pqkhqu86bkz",
+//   database: "dbecb23gbnxuy7",
+// });
+
 var connection = mysql.createConnection({
-  host: "35.209.244.236",
-  user: "ubkzwedezp79m",
-  password: "9pqkhqu86bkz",
-  database: "dbecb23gbnxuy7",
+  host: "190.90.160.165",
+  user: "andreste_andres",
+  password: "fn@p3Ru5nH+!",
+  database: "andreste_ecom_proyecto",
 });
 
 /** 

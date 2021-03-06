@@ -74,7 +74,7 @@ class login extends Component {
         </h3>
         <div className="imgcontainer">
           <img
-            src="http://andresteccorp.club/TesisAndres/imagenesProyecto/imagenesProyecto/imagenComercio/portadaEcommerce.jpg"
+            src="http://andresteccorp.club/ecom_val/imagenesProyecto/imagenComercio/logoProyecto.png"
             alt="Avatar"
             className="avatar"
           />

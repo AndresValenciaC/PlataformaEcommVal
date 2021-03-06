@@ -9,7 +9,7 @@ import Progress from "../progress";
 const cellEdit = {
   mode: "dbclick",
   blurToSave: true,
-  afterSaveCell: onAfterSaveCell
+  afterSaveCell: onAfterSaveCell,
 };
 
 // Start Crud Update Table Commercio
@@ -32,14 +32,14 @@ function onAfterSaveCell(row, cellName, cellValue) {
   const updateComercio = {
     column: column,
     value: value,
-    id: id
+    id: id,
   };
 
   Axios.post(urlA, updateComercio)
-    .then(res => {
+    .then((res) => {
       //
     })
-    .catch(e => {
+    .catch((e) => {
       //handle your errors
     });
 }
@@ -52,14 +52,14 @@ class storeInfo extends Component {
 
       selectedFile: null,
       setUploadPorcentage: 0,
-      setUploadFile: ""
+      setUploadFile: "",
     };
   }
 
   componentDidMount() {
     fetch("/commerceInfo")
-      .then(res => res.json())
-      .then(comercio =>
+      .then((res) => res.json())
+      .then((comercio) =>
         this.setState({ comercio }, () =>
           console.log("Comercio fetched...", comercio)
         )
@@ -67,22 +67,22 @@ class storeInfo extends Component {
   }
 
   // uploadImg
-  fileSelectedHandler = event => {
+  fileSelectedHandler = (event) => {
     console.log("Desde FSH" + event.target.files[0]);
 
     this.setState({
-      selectedFile: event.target.files[0]
+      selectedFile: event.target.files[0],
     });
   };
 
   fileUploadHandler = () => {
     const formData = new FormData();
     const setUploadPorcentage = this.state.setUploadPorcentage;
-    let url = "http://andresteccorp.club/TesisAndres/imagenUploadsComercio.php";
+    let url = "http://andresteccorp.club/ecom_val/imagenUploadsComercio.php";
 
     // get the idComercio
 
-    var idComercio = this.state.comercio.map(function(item) {
+    var idComercio = this.state.comercio.map(function (item) {
       return item.idComercio;
     });
 
@@ -92,23 +92,23 @@ class storeInfo extends Component {
     console.log("Desde FUH" + idComercio, formData);
     Axios.post(url, formData, {
       headers: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "multipart/form-data",
       },
 
-      onUploadProgress: progressEvent => {
+      onUploadProgress: (progressEvent) => {
         this.setState({
           setUploadPorcentage: parseInt(
             Math.round((progressEvent.loaded * 100) / progressEvent.total)
-          )
+          ),
         });
 
         //this.componentDidMount();
         // clear percentage
         //setTimeout(()=> setUploadPorcentage(0),10000);
-      }
+      },
     })
 
-      .then(res => {
+      .then((res) => {
         const auth = res.data;
 
         console.log("auth----" + auth);
@@ -123,14 +123,14 @@ class storeInfo extends Component {
           alert("Problemas en Subir Imagen" + "\nTratar de Nuevo");
         }
       })
-      .catch(e => {
+      .catch((e) => {
         //handle your errors
       });
   };
 
   render() {
     const options = {
-      afterTableComplete: this.handleTableComplete
+      afterTableComplete: this.handleTableComplete,
     };
 
     return (
@@ -153,7 +153,7 @@ class storeInfo extends Component {
                 fontSize: 60,
                 fontFamily: "fantasy",
                 marginTop: "30px",
-                marginLeft: "350px"
+                marginLeft: "350px",
               }}
             >
               Comercio Informacion
@@ -162,7 +162,7 @@ class storeInfo extends Component {
 
           <div>
             <ul>
-              {this.state.comercio.map(comercio => (
+              {this.state.comercio.map((comercio) => (
                 <img
                   style={{
                     marginTop: "30px",
@@ -170,7 +170,7 @@ class storeInfo extends Component {
                     marginLeft: "120px",
                     marginRight: "50px",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
                   }}
                   width={400}
                   height={400}
@@ -185,7 +185,7 @@ class storeInfo extends Component {
                 width: 250,
                 height: 25,
                 borderWidth: 1,
-                margin: 10
+                margin: 10,
               }}
             >
               {this.state.setUploadFile.fileName}
@@ -197,7 +197,7 @@ class storeInfo extends Component {
               width: 200,
               height: 25,
               borderWidth: 5,
-              margin: 10
+              margin: 10,
             }}
           >
             <Progress percentage={this.state.setUploadPorcentage} />
@@ -209,14 +209,14 @@ class storeInfo extends Component {
               height: 150,
               borderWidth: 1,
               margin: 10,
-              flexDirection: "row"
+              flexDirection: "row",
             }}
           >
             <input
               style={{ display: "none" }}
               type="file"
               onChange={this.fileSelectedHandler}
-              ref={fileInput => (this.fileInput = fileInput)}
+              ref={(fileInput) => (this.fileInput = fileInput)}
             />
             <button
               style={{
@@ -228,7 +228,7 @@ class storeInfo extends Component {
                 paddingHorizontal: 30,
                 paddingVertical: 5,
                 fontWeight: "500",
-                background: "#BDC3C7"
+                background: "#BDC3C7",
               }}
               onClick={() => this.fileInput.click()}
             >
@@ -243,7 +243,7 @@ class storeInfo extends Component {
                 paddingHorizontal: 30,
                 paddingVertical: 5,
                 fontWeight: "500",
-                background: "#BDC3C7"
+                background: "#BDC3C7",
               }}
               onClick={this.fileUploadHandler}
             >
@@ -255,7 +255,7 @@ class storeInfo extends Component {
             style={{
               marginTop: "50px",
               marginLeft: "150px",
-              marginRight: "150px"
+              marginRight: "150px",
             }}
           >
             <BootstrapTable

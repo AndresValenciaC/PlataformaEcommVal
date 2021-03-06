@@ -244,8 +244,7 @@ export default class tableProd extends Component {
   fileUploadHandler = () => {
     const formData = new FormData();
 
-    let url =
-      "http://andresteccorp.club/TesisAndres/imagenUploadsProductos.php";
+    let url = "http://andresteccorp.club/ecom_val/imagenUploadsProductos.php";
 
     // get the idProducto from state
 
