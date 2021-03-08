@@ -20,13 +20,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
 
+/** Deploy to heroku
+ * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
+ */
+
+/** script in pakjson
+ * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+ */
+
+// It serve React to the browser.
+
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
+
 /** Middle Ware */
 
 const whitelist = [
   "http://localhost:3000",
   "http://localhost:5000",
   "http://localhost:8080",
-  "https://ecomm-valencia28.herokuapp.com",
+  "https://ecomvalproyect.herokuapp.com",
 ];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -1009,25 +1028,6 @@ app.post("/usuarioImage", (req, res) => {
 });
 */
 /************************************ END ****************************************************** */
-
-/** Deploy to heroku
- * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
- */
-
-/** script in pakjson
- * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
- */
-
-// It serve React to the browser.
-
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "client/build")));
-  // Handle React routing, return all requests to React app
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
 
 const port = process.env.port || 8080;
 app.listen(port, () => `Server running on port ${port}`);
