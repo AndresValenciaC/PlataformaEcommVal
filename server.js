@@ -24,25 +24,17 @@ app.use(fileUpload());
  * https://www.youtube.com/watch?v=xgvLP3f2Y7k&list=WL&index=61
  */
 
-/** script in pakjson
- * "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
- */
-
 // It serve React to the browser.
 
-// if (process.env.NODE_ENV === "production") {
-//   // Serve any static files
-//   app.use(express.static(path.join(__dirname, "client/build")));
-//   // Handle React routing, return all requests to React app
-//   app.get("*", function (req, res) {
-//     res.sendFile(path.join(__dirname + "/client/build/index.html"));
-//   });
-// }
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Handle React routing, return all requests to React app
+  app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+}
 
-app.use(express.static(path.join(__dirname, "client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
 /** Middle Ware */
 
 const whitelist = [
