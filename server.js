@@ -43,21 +43,21 @@ const whitelist = [
   "http://localhost:8080",
   "https://ecomvalproyect.herokuapp.com",
 ];
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     console.log("** Origin of request " + origin);
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       console.log("Origin acceptable");
-//       callback(null, true);
-//     } else {
-//       console.log("Origin rejected");
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-// };
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("Origin rejected");
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
 
-//app.use(cors(corsOptions));
-app.use(cors());
+app.use(cors(corsOptions));
+//app.use(cors());
 app.post("/logout", (req, res) => {
   console.log("Logout", req.body);
   const a = req.body;
