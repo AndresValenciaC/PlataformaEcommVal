@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import logo from "/Users/andrescampovalencia/Desktop/13Dic2020 EcommerceAdmin/client/src/logoPLataform.png";
+
 import { NavLink } from "react-router-dom";
 
 import "./login.css";
@@ -73,7 +73,7 @@ class login extends Component {
           Login - ValenciaCorpEcommerce
         </h3>
         <div className="imgcontainer">
-          <img src={logo} alt="Avatar" className="avatar" />
+          <img src="" alt="Avatar" className="avatar" />
         </div>
 
         <div className="container">
