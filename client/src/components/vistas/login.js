@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Logo from "../../logoPLataform.png";
 import { NavLink } from "react-router-dom";
 
 import "./login.css";
@@ -73,7 +73,7 @@ class login extends Component {
           Login - ValenciaCorpEcommerce
         </h3>
         <div className="imgcontainer">
-          <img src="" alt="Avatar" className="avatar" />
+          <img src={Logo} alt="Avatar" className="avatar" />
         </div>
 
         <div className="container">
