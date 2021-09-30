@@ -1,10 +1,7 @@
-# React Express Starter Pack
+# React Express Admin plataform
 
-> Create full stack apps with React and Express. Run your client and server with a single command. 
+>  Full stack app with React Node and Express; the Data Base its Mysql.
 
-### Redux Version
-This version does not include Redux
-[Click Here For Redux Version](https://github.com/bradtraversy/react_redux_express_starter) 
 
 ## Quick Start
 
@@ -31,8 +28,7 @@ npm run client
 
 ### Author
 
-Brad Traversy
-[Traversy Media](http://www.traversymedia.com)
+Andres Valencia
 
 ### Version
 
